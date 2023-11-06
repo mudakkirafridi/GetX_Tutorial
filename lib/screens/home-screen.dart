@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_flutter/countexample-getx.dart';
 import 'package:getx_flutter/screens/screen-one.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<HomeScreen> {
+  final controller = Get.put(CountController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +22,7 @@ class _MyWidgetState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Text('========GetX Utilities========'),
           ElevatedButton(
               onPressed: () {
                 Get.defaultDialog(
@@ -94,7 +97,7 @@ class _MyWidgetState extends State<HomeScreen> {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    Get.updateLocale(Locale('en', 'US'));
+                    Get.updateLocale(const Locale('en', 'US'));
                   },
                   child: const Text('English')),
               const SizedBox(
@@ -102,18 +105,30 @@ class _MyWidgetState extends State<HomeScreen> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Get.updateLocale(Locale('ur', 'PK'));
+                    Get.updateLocale(const Locale('ur', 'PK'));
                   },
                   child: const Text('Urdu'))
             ],
-          )
+          ),
+          const Text('======GetX State Management======'),
+          Obx(
+            () => Text(
+              controller.count.toString(),
+              style: const TextStyle(fontSize: 23),
+            ),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                controller.incrementCount();
+              },
+              child: const Text('Count +'))
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.snackbar("khan", 'heloo khan');
         },
-        child: const Text('Click'),
+        child: const Text('SnBar'),
       ),
     );
   }
