@@ -17,6 +17,8 @@ class _MyWidgetState extends State<HomeScreen> {
         title: const Text('GetX Tutorial'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ElevatedButton(
               onPressed: () {
@@ -80,7 +82,31 @@ class _MyWidgetState extends State<HomeScreen> {
                 // ));
                 Get.toNamed('/ScreenOne', arguments: ['mudakir', 'khan']);
               },
-              child: const Text('Next Screen'))
+              child: const Text('Next Screen')),
+          ListTile(
+            title: Text('message'.tr),
+            subtitle: Text('name'.tr),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          Row(
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    Get.updateLocale(Locale('en', 'US'));
+                  },
+                  child: const Text('English')),
+              const SizedBox(
+                width: 5,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.updateLocale(Locale('ur', 'PK'));
+                  },
+                  child: const Text('Urdu'))
+            ],
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(

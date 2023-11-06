@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_flutter/languages.dart';
 import 'package:getx_flutter/screens/home-screen.dart';
 import 'package:getx_flutter/screens/screen-one.dart';
 
@@ -13,6 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      translations: Languages(),
+      fallbackLocale: Locale('en', 'US'),
+      locale: const Locale('en', 'US'),
       debugShowCheckedModeBanner: false,
       getPages: [
         GetPage(name: "/", page: () => const HomeScreen()),
