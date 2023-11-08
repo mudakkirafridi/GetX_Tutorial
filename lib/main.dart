@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       translations: Languages(),
-      fallbackLocale: Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
       locale: const Locale('en', 'US'),
       debugShowCheckedModeBanner: false,
       getPages: [
