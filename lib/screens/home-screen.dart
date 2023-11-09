@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_flutter/countexample-getx.dart';
@@ -149,6 +151,21 @@ class _MyWidgetState extends State<HomeScreen> {
                   width: 200,
                 )
               ],
+            ),
+            Obx(
+              () => InkWell(
+                onTap: () {
+                  controller.getImage();
+                },
+                child: CircleAvatar(
+                  backgroundImage: controller.ImagePath.isNotEmpty
+                      ? FileImage(File(controller.ImagePath.toString()))
+                      : null,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
             )
           ],
         ),

@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CountController extends GetxController {
   RxInt count = 0.obs;
@@ -28,5 +30,16 @@ class CountController extends GetxController {
 
   removeFromFavourite(String value) {
     temFruitList.remove(value);
+  }
+
+  RxString ImagePath = ''.obs;
+  Future getImage() async {
+    final ImagePicker picker = ImagePicker();
+    final image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      ImagePath.value = image.path.toString();
+    } else {
+      SnackBar(content: Text('Image Not Selected'));
+    }
   }
 }
